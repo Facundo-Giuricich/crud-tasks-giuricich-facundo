@@ -1,22 +1,20 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import sequelize from './src/config/database.js';
-import userRoutes from './src/routes/user.routes.js';
-import taskRoutes from './src/routes/task.routes.js';
+import { sequelize } from './src/config/database.js';
+import usersRoutes from './src/routes/user.routes.js';
+import tasksRoutes from './src/routes/task.routes.js';
 
-dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Rutas
-app.use('/api/users', userRoutes);
-app.use('/api/tasks', taskRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/tasks', tasksRoutes);
 
-// Conexión y servidor
-try {
-  await sequelize.sync({ force: false });
-  console.log('Base de datos conectada');
-  app.listen(3000, () => console.log('Servidor en http://localhost:3000'));
-} catch (error) {
-  console.error('Error al conectar la BD:', error);
-}
+// Sincroniza modelos
+sequelize.sync()
+  .then(() => console.log('Base de datos sincronizada'))
+  .catch((err) => console.error('Error al sincronizar la base de datos', err));
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
+});
