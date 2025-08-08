@@ -5,8 +5,11 @@ export const createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+    if (typeof name !== 'string' || name.trim() === '' || name.length > 100 ||
+  typeof email !== 'string' || email.trim() === '' || email.length > 100 ||
+  typeof password !== 'string' || password.trim() === '' || password.length > 100
+) {
+  return res.status(400).json({ message: 'Datos inválidos. Todos los campos deben ser strings no vacíos y de máximo 100 caracteres.' });
     }
 
     const existing = await User.findOne({ where: { email } });

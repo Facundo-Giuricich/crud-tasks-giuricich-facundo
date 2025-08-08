@@ -5,8 +5,12 @@ export const createTask = async (req, res) => {
   try {
     const { title, description, isComplete } = req.body;
 
-    if (!title || !description) {
-      return res.status(400).json({ message: 'Título y descripción son obligatorios.' });
+    if (
+  typeof title !== 'string' || title.trim() === '' || title.length > 100 ||
+  typeof description !== 'string' || description.trim() === '' || description.length > 100 ||
+  (typeof isComplete !== 'undefined' && typeof isComplete !== 'boolean')
+) {
+  return res.status(400).json({ message: 'Datos inválidos. Verificá título, descripción y estado.' });
     }
 
     const existing = await Task.findOne({ where: { title } });
