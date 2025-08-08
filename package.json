@@ -1,0 +1,29 @@
+{
+  "name": "crud-tasks-giuricich-facundo",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+  "dev": "nodemon app.js"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Facundo-Giuricich/crud-tasks-giuricich-facundo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Facundo-Giuricich/crud-tasks-giuricich-facundo/issues"
+  },
+  "homepage": "https://github.com/Facundo-Giuricich/crud-tasks-giuricich-facundo#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
