@@ -1,7 +1,7 @@
 import express from 'express';
-import taskRoutes from './src/routes/task.routes.js';
-import userRoutes from './src/routes/user.routes.js';
-import { sequelize } from './src/config/database.js'; // Importar sequelize
+import taskRoutes from './routes/task.routes.js';
+import userRoutes from './routes/user.routes.js';
+import { sequelize } from './config/database.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -9,9 +9,9 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Rutas
-app.use('/api', taskRoutes);
-app.use('/api/users', userRoutes);
+// Rutas - Cumpliendo consignas exactas:
+app.use('/api', taskRoutes);        
+app.use('/api/users', userRoutes);  
 
 // Ruta de prueba
 app.get('/', (req, res) => {
