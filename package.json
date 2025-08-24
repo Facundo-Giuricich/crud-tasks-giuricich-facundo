@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-  "dev": "nodemon app.js"
-},
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Facundo-Giuricich/crud-tasks-giuricich-facundo.git"
